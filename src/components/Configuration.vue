@@ -207,46 +207,46 @@ function updateDebridApiUrl() {
         <legend class="text-sm">
           {{ $t('step1_select_preset') }}
         </legend>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-          <label class="label cursor-pointer">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label class="label cursor-pointer border border-base-300 rounded p-2 hover:bg-base-200">
             <input
               type="radio"
               value="ita-nomfp"
               v-model="preset"
               class="radio radio-primary"
             />
-            <span class="label-text ml-2">BASE (NO MediaflowProxy)</span>
+            <span class="label-text ml-2 font-medium">BASE (NO MediaflowProxy)</span>
           </label>
-          <label class="label cursor-pointer">
+          <label class="label cursor-pointer border border-base-300 rounded p-2 hover:bg-base-200">
             <input
               type="radio"
               value="ita-mfp"
               v-model="preset"
               class="radio radio-primary"
             />
-            <span class="label-text ml-2">PRO (CON MediaflowProxy)</span>
+            <span class="label-text ml-2 font-medium">PRO (CON MediaflowProxy)</span>
           </label>
-          <label class="label cursor-pointer">
+          <label class="label cursor-pointer border border-base-300 rounded p-2 hover:bg-base-200">
             <input
               type="radio"
               value="ita-rd"
               v-model="preset"
               class="radio radio-primary"
             />
-            <span class="label-text ml-2">PRO Debrid</span>
+            <span class="label-text ml-2 font-medium">PRO Debrid</span>
           </label>
-          <label class="label cursor-pointer">
+          <label class="label cursor-pointer border border-base-300 rounded p-2 hover:bg-base-200">
             <input
               type="radio"
               value="ita-rd-mfp"
               v-model="preset"
               class="radio radio-primary"
             />
-            <span class="label-text ml-2">PRO Debrid + MediaflowProxy</span>
+            <span class="label-text ml-2 font-medium">PRO Debrid + MediaflowProxy</span>
           </label>
         </div>
         <div class="mt-4">
-          <label class="label cursor-pointer">
+          <label class="label cursor-pointer border border-error rounded p-2 hover:bg-red-50">
             <input
               type="radio"
               value="factory"
