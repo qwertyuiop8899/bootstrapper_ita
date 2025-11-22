@@ -335,28 +335,33 @@ export async function buildPresetService(params: BuildPresetServiceParams) {
 
   // IlCorsaroViola
   if (presetConfig.ilcorsaroviola) {
-    if (
-      isDebridApiKeyValid &&
-      (debridService === 'realdebrid' || debridService === 'torbox')
-    ) {
-      const config: any = {
-        tmdb_key: '5462f78469f3d80bf5201645294c16e4',
-        use_corsaronero: true,
-        use_uindex: true,
-        use_knaben: true
-      };
+    let config: any = {
+      tmdb_key: '5462f78469f3d80bf5201645294c16e4',
+      use_corsaronero: true,
+      use_uindex: true,
+      use_knaben: true
+    };
+
+    if (isDebridApiKeyValid && (debridService === 'realdebrid' || debridService === 'torbox')) {
+      // Debrid Configuration
       if (debridService === 'realdebrid') {
         config.use_rd = true;
         config.rd_key = debridApiKey;
       }
-      if (debridService === 'torbox') config.torbox_key = debridApiKey;
-
-      const encodedConfig = encodeDataFromTransportUrl(config);
-      presetConfig.ilcorsaroviola.transportUrl = `https://ilcorsaroviola.vercel.app/${encodedConfig}/manifest.json`;
-
-      if (debridServiceName) {
-        presetConfig.ilcorsaroviola.manifest.name += ` | ${debridServiceName}`;
+      if (debridService === 'torbox') {
+        config.use_torbox = true;
+        config.torbox_key = debridApiKey;
       }
+    } else {
+      // NO Debrid Configuration
+      config.max_res_limit = 5;
+    }
+
+    const encodedConfig = encodeDataFromTransportUrl(config);
+    presetConfig.ilcorsaroviola.transportUrl = `https://ilcorsaroviola.vercel.app/${encodedConfig}/manifest.json`;
+
+    if (debridServiceName) {
+      presetConfig.ilcorsaroviola.manifest.name += ` | ${debridServiceName}`;
     }
   }
 
@@ -416,6 +421,8 @@ export async function buildPresetService(params: BuildPresetServiceParams) {
       const encodedPsw = Buffer.from(mediaFlowProxyPassword).toString('base64').replace(/=/g, '');
       presetConfig.tvvoo.transportUrl = `https://tvvoo.hayd.uk/cfg-it-mfu_${encodedUrl}-mfp_${encodedPsw}/manifest.json`;
       presetConfig.tvvoo.manifest.name += ` | MFP`;
+    } else {
+      presetConfig.tvvoo.transportUrl = `https://tvvoo.hayd.uk/cfg-it/manifest.json`;
     }
   }
 
