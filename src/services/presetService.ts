@@ -81,22 +81,25 @@ export async function buildPresetService(params: BuildPresetServiceParams) {
   }
 
   // AIOLists options
-  aiolistsConfig.config.tmdbLanguage =
-    language === 'es-MX' || language === 'es-ES' ? 'es' : language;
-  aiolistsConfig.config = _.merge(
-    {},
-    aiolistsConfig.config,
-    language !== 'en' ? aiolistsConfig[language] : {}
-  );
+  if (aiolistsConfig && aiolistsConfig.config) {
+    aiolistsConfig.config.tmdbLanguage =
+      language === 'es-MX' || language === 'es-ES' ? 'es' : language;
+    aiolistsConfig.config = _.merge(
+      {},
+      aiolistsConfig.config,
+      language !== 'en' ? aiolistsConfig[language] : {}
+    );
 
-  if (rpdbKey) {
-    aiolistsConfig.config.rpdbApiKey = rpdbKey;
-    aiolistsConfig.config.isConnected = aiolistsConfig.config.isConnected || {};
-    aiolistsConfig.config.isConnected.rpdb = true;
+    if (rpdbKey) {
+      aiolistsConfig.config.rpdbApiKey = rpdbKey;
+      aiolistsConfig.config.isConnected =
+        aiolistsConfig.config.isConnected || {};
+      aiolistsConfig.config.isConnected.rpdb = true;
+    }
   }
 
   // AIOLists request
-  if (presetConfig.aiolists) {
+  if (presetConfig.aiolists && aiolistsConfig) {
     try {
       const aiolistsData = await getAioListsConfig(aiolistsConfig);
       if (aiolistsData && aiolistsData.manifest && aiolistsData.transportUrl) {
