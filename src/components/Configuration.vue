@@ -245,6 +245,17 @@ function updateDebridApiUrl() {
             <span class="label-text ml-2">PRO Debrid + MediaflowProxy</span>
           </label>
         </div>
+        <div class="mt-4">
+          <label class="label cursor-pointer">
+            <input
+              type="radio"
+              value="factory"
+              v-model="preset"
+              class="radio radio-error"
+            />
+            <span class="label-text ml-2 text-error font-bold">Reset ADDON (attenzione resetta tutti gli addon)</span>
+          </label>
+        </div>
       </fieldset>
 
       <!-- Step 3: Debrid API Key -->
