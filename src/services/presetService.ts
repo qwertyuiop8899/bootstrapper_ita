@@ -362,35 +362,51 @@ export async function buildPresetService(params: BuildPresetServiceParams) {
 
   // StreamVix
   if (presetConfig.streamvix) {
+    let config: any = {
+      disableLiveTv: false,
+      vavooNoMfpEnabled: true,
+      disableVixsrc: false,
+      vixDirect: false,
+      vixDirectFhd: true,
+      vixProxy: false,
+      vixProxyFhd: false,
+      guardahdEnabled: true,
+      streamingwatchEnabled: true,
+      guardaserieEnabled: true,
+      eurostreamingEnabled: false,
+      loonexEnabled: true,
+      animesaturnEnabled: true,
+      animeworldEnabled: true,
+      animeunityEnabled: true,
+      animeunityAuto: false,
+      animeunityFhd: true
+    };
+
     if (mediaFlowProxyUrl && mediaFlowProxyPassword) {
-      const config = {
+      // MFP Configuration
+      config = {
+        ...config,
         mediaflowMaster: true,
         mediaFlowProxyUrl,
         mediaFlowProxyPassword,
-        disableLiveTv: false,
-        vavooNoMfpEnabled: true,
-        disableVixsrc: false,
-        vixDirect: false,
-        vixDirectFhd: true,
-        vixProxy: false,
-        vixProxyFhd: false,
         cb01Enabled: true,
-        guardahdEnabled: true,
-        streamingwatchEnabled: true,
-        guardaserieEnabled: true,
-        eurostreamingEnabled: true,
-        loonexEnabled: true,
-        toonitaliaEnabled: true,
-        animesaturnEnabled: true,
-        animeworldEnabled: true,
-        animeunityEnabled: true,
-        animeunityAuto: false,
-        animeunityFhd: true
+        toonitaliaEnabled: true
       };
-      const encodedConfig = encodeURIComponent(JSON.stringify(config));
-      presetConfig.streamvix.transportUrl = `https://streamvix.hayd.uk/${encodedConfig}/manifest.json`;
       presetConfig.streamvix.manifest.name += ` | MFP`;
+    } else {
+      // NO MFP Configuration
+      config = {
+        ...config,
+        mediaflowMaster: false,
+        mediaFlowProxyUrl: "",
+        mediaFlowProxyPassword: "",
+        cb01Enabled: false,
+        toonitaliaEnabled: false
+      };
     }
+
+    const encodedConfig = encodeURIComponent(JSON.stringify(config));
+    presetConfig.streamvix.transportUrl = `https://streamvix.hayd.uk/${encodedConfig}/manifest.json`;
   }
 
   // TvVoo
