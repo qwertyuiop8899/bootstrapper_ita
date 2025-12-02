@@ -358,7 +358,7 @@ export async function buildPresetService(params: BuildPresetServiceParams) {
     }
 
     const encodedConfig = encodeDataFromTransportUrl(config);
-    presetConfig.ilcorsaroviola.transportUrl = `https://ilcorsaroviola.vercel.app/${encodedConfig}/manifest.json`;
+    presetConfig.ilcorsaroviola.transportUrl = `https://ilcorsaroviola-icv.hf.space/${encodedConfig}/manifest.json`;
 
     if (debridServiceName) {
       presetConfig.ilcorsaroviola.manifest.name += ` | ${debridServiceName}`;
