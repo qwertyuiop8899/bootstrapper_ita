@@ -1745,13 +1745,13 @@
         "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,ilcorsaronero|language=italian|qualityfilter=threed,{{it.no4k}},scr,cam,unknown{{it.maxSize}}|limit={{it.limit}}{{it.transportUrl}}/manifest.json"
       },
       "ilcorsaroviola": {
-        "transportUrl": "https://ilcorsaroviola.vercel.app/manifest.json",
+        "transportUrl": "https://ilcorsaroviola-icv.hf.space/manifest.json",
         "manifest": {
           "id": "community.ilcorsaroviola.ita",
           "version": "1.0.0",
           "name": "IlCorsaroViola",
           "description": "Streaming da UIndex, CorsaroNero DB local, Knaben e Jackettio con o senza Real-Debrid, Torbox e Alldebrid.",
-          "logo": "https://ilcorsaroviola.vercel.app/logo.png",
+          "logo": "https://ilcorsaroviola-icv.hf.space/logo.png",
           "types": [
             "movie",
             "series",
@@ -2359,13 +2359,13 @@
       "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,ilcorsaronero|language=italian|qualityfilter=threed,{{it.no4k}},scr,cam,unknown{{it.maxSize}}|limit={{it.limit}}{{it.transportUrl}}/manifest.json"
     },
     "ilcorsaroviola": {
-      "transportUrl": "https://ilcorsaroviola.vercel.app/manifest.json",
+      "transportUrl": "https://ilcorsaroviola-icv.hf.space/manifest.json",
       "manifest": {
         "id": "community.ilcorsaroviola.ita",
         "version": "1.0.0",
         "name": "IlCorsaroViola",
         "description": "Streaming da UIndex, CorsaroNero DB local, Knaben e Jackettio con o senza Real-Debrid, Torbox e Alldebrid.",
-        "logo": "https://ilcorsaroviola.vercel.app/logo.png",
+        "logo": "https://ilcorsaroviola-icv.hf.space/logo.png",
         "types": [
           "movie",
           "series",
